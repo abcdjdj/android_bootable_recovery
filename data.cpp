@@ -1036,8 +1036,8 @@ int DataManager::GetMagicValue(const string varName, string& value)
 				if (lastVal > 100)	lastVal = 101;
 				if (lastVal < 0)	lastVal = 0;
 			}
-#ifdef TW_CUSTOM_BATTERY_PATH
-			string status_file = EXPAND(TW_CUSTOM_BATTERY_PATH);
+#ifdef TW_CUSTOM_BATTERY_STATUS_PATH
+			string status_file = EXPAND(TW_CUSTOM_BATTERY_STATUS_PATH);
 			status_file += "/status";
 			cap = fopen(status_file.c_str(),"rt");
 #else
