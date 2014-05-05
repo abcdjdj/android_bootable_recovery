@@ -1015,12 +1015,7 @@ int DataManager::GetMagicValue(const string varName, string& value)
 		char tmp[16];
 		static char charging = ' ';
 		static int lastVal = -1;
-		static time_t nextSecCheck = 0;
-
-		struct timeval curTime;
-		gettimeofday(&curTime, NULL);
-		if (curTime.tv_sec > nextSecCheck)
-		{
+	
 			char cap_s[4];
 #ifdef TW_CUSTOM_BATTERY_PATH
 			string capacity_file = EXPAND(TW_CUSTOM_BATTERY_PATH);
@@ -1051,8 +1046,7 @@ int DataManager::GetMagicValue(const string varName, string& value)
 				else
 					charging = ' ';
 			}
-			nextSecCheck = curTime.tv_sec + 60;
-		}
+			
 
 		sprintf(tmp, "%i%%%c", lastVal, charging);
 		value = tmp;
